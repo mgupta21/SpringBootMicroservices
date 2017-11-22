@@ -1,6 +1,6 @@
 version: '2'
 services:
   simpleservice:
-      image: springboot/simple-service:demo
+      image: springboot/licensing-service:demo
       ports:
         - "8080:8080"

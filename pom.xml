@@ -23,5 +23,6 @@
 
     <modules>
         <module>simple-service</module>
+        <module>licensing-service</module>
     </modules>
 </project>
