@@ -7,7 +7,7 @@
 
     <parent>
         <groupId>com.java.spring</groupId>
-        <artifactId>springBootMicroServices</artifactId>
+        <artifactId>SpringBootMicroservices</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
@@ -44,10 +44,10 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/target/dockerfile</outputDirectory>
+                            <outputDirectory>${basedir}/target/deploy</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>src/main/docker</directory>
+                                    <directory>deploy</directory>
                                     <filtering>true</filtering>
                                 </resource>
                             </resources>
@@ -61,7 +61,7 @@
                 <version>0.4.10</version>
                 <configuration>
                     <imageName>${docker.image.name}:${docker.image.tag}</imageName>
-                    <dockerDirectory>${basedir}/target/Dockerfile</dockerDirectory>
+                    <dockerDirectory>${basedir}/target/deploy</dockerDirectory>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
