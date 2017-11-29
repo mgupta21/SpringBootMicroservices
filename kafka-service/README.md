@@ -1,0 +1,1 @@
+# App to demonstrate use of Spring Kafka template to create a producer and Spring Kafka listener to create a consumer

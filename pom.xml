@@ -14,6 +14,10 @@
         <version>1.5.8.RELEASE</version>
     </parent>
 
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -29,5 +33,6 @@
     <modules>
         <module>simple-service</module>
         <module>licensing-service</module>
+        <module>kafka-service</module>
     </modules>
 </project>
