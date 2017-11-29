@@ -59,7 +59,7 @@ public class SpringKafkaApplicationTest {
 	@Test
 	public void testReceive() throws InterruptedException {
 		sender.send(TOPIC, "Hello Spring Kafka!");
-		receiver.getLatch().await(10000, TimeUnit.MICROSECONDS);
+		receiver.getLatch().await(10, TimeUnit.SECONDS);
 		assertEquals(0, receiver.getLatch().getCount());
 	}
 
