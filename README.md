@@ -1,3 +1,19 @@
+## Challenges of traditional
+1. Tightly Coupled
+2. Leaky : In a traditional model, this data is kept in the same data model and within the same data store. Even though there are obvious boundaries between the data
+3. Monolithic : application components for a traditional application reside in a single code base that’s shared across multiple teams, any time a change to the code is made, the entire application has to be recompiled
+
+## Characteristics of microservice based Architecture
+1. Constrained : Single set of responsibility and narrow scope
+2. Loosely Coupled : collection of small services that only interact with one another through a non–implementation specific interface
+3. Abstracted : Microservices completely own their data structures and data sources.
+4. Independent : Each microservice in a microservice application can be compiled and deployed independently of the other services used in the application.
+
+## Importance of microservice in cloud
+1. A large and diverse user base : Microservices allow features to be delivered quickly (no long release cycles)
+2. Extremely high uptime requirements : decentralized nature. isolate faults to specific parts 
+3. Uneven volume requirements : easy to scale components horizontally across multiple servers in cloud.
+
 ## Microservice Principles
 1. A microservice should be self-contained and independently deployable with multiple instances of the service being started up and torn down with a single software artifact.
     a. Service assembly — How do you package and deploy your service to guarantee repeatability and consistency so that the same service code and runtime is deployed exactly the same way?
@@ -21,3 +37,13 @@
 - Dev/prod parity — Minimize the gaps that exist between all of the environments in which the service runs (including the developer’s desktop). A developer should use the same infrastructure locally for the service development in which the actual service will run. 
 - Logs — Logs are a stream of events. As logs are written out, they should be streamable to tools, such as Splunk (http://splunk.com) or Fluentd (http://fluentd.org)
 - Admin processes — Developers will often have to do administrative tasks against their services (data migration or conversion). These tasks should never be ad hoc and instead should be done via scripts that are managed and maintained through the source code repository. These scripts should be repeatable and non-changing (the script code isn’t modified for each environment) across each environment they’re run against.
+
+
+## Source Code
+https://www.safaribooksonline.com/library/view/building-microservices-with/9780134678658/BMSB_07_03.html
+https://github.com/livelessons-spring/building-microservices
+
+- There are two maintype of cloud provider. Infrastructure and platform. 
+- Infrastructure as a service or IAAS, are things like Amazon EC2or Google Compute Engine. This provides you a virtual machine. 
+- Platform as a serviceoperates at a higher level. This is things like Heroku, Cloud Foundry and Google App Engine
+
