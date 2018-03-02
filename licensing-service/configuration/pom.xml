@@ -2,13 +2,10 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.thoughtmechanix</groupId>
     <artifactId>configurationserver</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>Config Server</name>
     <description>Config Server demo project</description>
 
@@ -16,6 +13,7 @@
         <groupId>com.java.spring</groupId>
         <artifactId>SpringBootMicroservices</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../..</relativePath>
     </parent>
 
     <dependencyManagement>
@@ -48,7 +46,7 @@
         <start-class>com.thoughtmechanix.confsvr.ConfigServerApplication</start-class>
         <java.version>1.8</java.version>
         <docker.image.name>springboot/configurationserver</docker.image.name>
-        <docker.image.tag>chapter3</docker.image.tag>
+        <docker.image.tag>demo</docker.image.tag>
     </properties>
 
     <build>

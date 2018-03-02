@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: user
+
+server:
+  port: 8888
+
+# This configures properties on a Ribbon client. Spring Cloud Netflix creates an ApplicationContext for each Ribbon client name in our application.
+# This is used to give the client a set of beans for instances of Ribbon components.
+# Load balancers in Ribbon normally get their server lists from a Netflix Eureka service registry. here, we’re skipping Eureka and instead give Ribbon a static listOfServers
+say-hello:
+  ribbon:
+    eureka:
+      enabled: false
+    listOfServers: localhost:8090,localhost:9092,localhost:9999
+    ServerListRefreshInterval: 15000

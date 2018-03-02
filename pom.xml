@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <postgresql.version>9.3-1100-jdbc41</postgresql.version>
     </properties>
 
     <dependencies>
@@ -38,7 +39,13 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
-        
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
+        </dependency>
+
     </dependencies>
 
     <modules>
