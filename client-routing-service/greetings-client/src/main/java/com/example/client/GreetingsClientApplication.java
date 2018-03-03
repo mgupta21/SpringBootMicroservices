@@ -1,11 +1,8 @@
+package com.example.client;
+
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
-
-import com.google.common.util.concurrent.RateLimiter;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.zuul.ZuulFilter;
-import com.netflix.zuul.context.RequestContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -18,9 +15,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,9 +24,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.google.common.util.concurrent.RateLimiter;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.zuul.ZuulFilter;
+import com.netflix.zuul.context.RequestContext;
+
 /**
  * Created by mgupta on 3/2/18.
  */
+// Build simple client that will call downstream greeting service
+// This is a special client called edge service, it is an interface to the service
 // Takes advantage of service registry / calls service registry. check localhost:8761
 
 // Zuul: Routes automatically created for us which proxy requests to the services that are registered in the eureka registry
@@ -152,6 +154,3 @@ class RateLimitingZuulFilter extends ZuulFilter {
 		return null;
 	}
 }
-
-// Build simple client that will call downstream greeting service
-// This is a special client called edge service, it is an interface to the service
