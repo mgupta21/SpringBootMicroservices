@@ -34,7 +34,7 @@ public class SayHelloApplication {
 	@RequestMapping(value = "/")
 	public String home() {
 		log.info("Access /");
-		return "Hi!";
+		return "Reachable!";
 	}
 
 	public static void main(String[] args) {

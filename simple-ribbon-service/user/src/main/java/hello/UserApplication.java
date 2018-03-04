@@ -32,6 +32,8 @@ public class UserApplication {
 	@Autowired
 	RestTemplate restTemplate;
 
+	// curl http://localhost:8888/hi  ---> Greetings, Mayank!
+	// curl http://localhost:8888/hi?name=Orontes  ----> Greetings, Orontes!
 	@RequestMapping("/hi")
 	public String hi(@RequestParam(value = "name", defaultValue = "Mayank") String name) {
 		//String greeting = this.restTemplate.getForObject("http://localhost:8090/greeting", String.class);
