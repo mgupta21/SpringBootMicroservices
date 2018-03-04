@@ -15,7 +15,9 @@ import org.springframework.cloud.netflix.feign.FeignClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.google.common.util.concurrent.RateLimiter;
+import com.netflix.discovery.DiscoveryClient;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
@@ -32,6 +35,7 @@ import com.netflix.zuul.context.RequestContext;
 /**
  * Created by mgupta on 3/2/18.
  */
+
 // Build simple client that will call downstream greeting service
 // This is a special client called edge service, it is an interface to the service
 // Takes advantage of service registry / calls service registry. check localhost:8761
@@ -93,15 +97,14 @@ class GreetingsApiGatewayRestController {
 		this.greetingsClient = client;
 	}
 
+	public String fallback(String name) {
+		return "ohai!";
+	}
+
 	@HystrixCommand(fallbackMethod = "fallback")
 	@RequestMapping(method = RequestMethod.GET, value = "/hi/{name}")
 	String greet(@PathVariable String name) {
 		return this.greetingsClient.greet(name).getGreeting();
-	}
-
-	// Used for exception handling, show this message if service is down/unreachable/warming up. Failure Resilience.
-	public String fallback(String name) {
-		return "ohai!";
 	}
 }
 
@@ -117,7 +120,7 @@ class Greeting {
 // Zuul is an ideal place for authentication, authorization, rate limiting, traffic shaping, traffic routing, filters etc.
 
 // Disabled (to test run "watch -n1 curl -v http://localhost:9999/greetings-service/greetings/world")
-@Component
+//@Component
 class RateLimitingZuulFilter extends ZuulFilter {
 
 	private final RateLimiter rateLimiter = RateLimiter.create(1.0 / 30.0);

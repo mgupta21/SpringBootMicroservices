@@ -1,4 +1,6 @@
-# First start greetings-service
+# First start the eureka-server (port 8761)
 mvn spring-boot:run
-# Then start greetings-client
+# Second start greetings-service (port 8762)
+mvn spring-boot:run
+# Third start greetings-client (port 8763)
 mvn spring-boot:run
